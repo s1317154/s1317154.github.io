@@ -1,0 +1,171 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>音声合成のサンプル</title>
+</head>
+<style>
+  .center-box {
+    text-align:center;
+  }
+  .large-text {
+    font-size: 4.0rem;
+  }
+  body{
+        background-image: url(kabegami.jpg);
+        background-repeat:no-repeat;
+    }
+  #speak{
+        position: absolute;
+        left:0px;
+        top:250px;
+    }
+    
+  #speak1{
+        position: absolute;
+        top:250px;
+        left:150px;
+    }
+    
+  #speak2{
+        position: absolute;
+        top:250px;
+        left:300px;
+    }
+    
+  #speak3{
+        position: absolute;
+        top:250px;
+        left:450px;
+    }
+    
+  #speak4{
+        position: absolute;
+        top:450px;
+        left:0px;
+    }
+    
+  #speak5{
+        position: absolute;
+        top:450px;
+        left:150px;
+    }
+    
+  #speak6{
+        position: absolute;
+        top:450px;
+        left:300px;
+    }
+    
+  #speak7{
+        position: absolute;
+        top:450px;
+        left:450px;
+    }
+    
+  #speak8{
+        position: absolute;
+        top:450px;
+        left:600px;
+    }
+    
+
+    
+</style>
+<body>
+    
+<audio preload = "metadata" controls>
+<source src ="music/BGM.mp3">
+</audio>
+    
+<button1 id="speak"><img src ="asami.png" width="100px"></button1>
+<button2 id="speak1"><img src ="kinuyo.png" width="100px"></button2>
+<button3 id="speak2"><img src ="keito.png" width="100px"></button3>
+<button4 id="speak3"><img src ="tanukiti.png" width="100px"></button4>
+<button5 id="speak4"><img src ="kotobuki.png" width="100px"></button5>
+<button6 id="speak5"><img src ="mogura.png" width="100px"></button6>
+<button7 id="speak6"><img src ="totakeke.png" width="100px"></button7>
+<button8 id="speak7"><img src ="neko.png" width="100px"></button8>
+
+
+
+<script>
+ 
+  // 発話機能をインスタンス化
+  let msg = new SpeechSynthesisUtterance();
+  let voices = window.speechSynthesis.getVoices();
+
+  function speak(text, x, y) {
+    // 以下オプション設定
+    msg.voice = voices[7]; // 7:Google 日本人 ja-JP ※他は英語のみ
+    msg.volume = 1; // 音量 min 0 ~ max 1
+    msg.rate = x; // 速度 min 0 ~ max 10
+    msg.pitch = y; // 音程 min 0 ~ max 2
+
+    msg.text = text; // 喋る内容
+    msg.lang = 'ja-JP'; // en-US or ja-JP
+    // msg.lang = 'en-US'; // en-US or ja-JP
+
+    // 発話実行S
+    speechSynthesis.speak(msg, x);
+  }
+    
+
+  // 終了時の処理
+  msg.onend = function (event) {
+    console.log("End: ",text);
+  }
+  
+  let text =  "私はあけみです。";
+  let text1 = "私はきぬよです";
+  let text2 = "私はけいとです"; 
+  let text3 = "私はたぬきちです";
+  let text4 = "私はことぶきです";
+  let text5 = "私はリセットさんだ";
+  let text6 = "私はしずえです";
+  let text7 = "私はとたけけです";
+  let text8 = "見知らぬねこです";
+
+
+
+  let button1 = document.querySelector("#speak");
+  button1.onclick = function () {
+    speak(text, 1.0, 1.0,);
+  }
+  
+  let button2 = document.querySelector("#speak1");
+  button2.onclick = function () {
+    speak(text1, 2.0, 0.0);
+  }
+  
+  let button3 = document.querySelector("#speak2");
+  button3.onclick = function () {
+    speak(text2, 5, 2.0);
+  }
+  
+  let button4 = document.querySelector("#speak3");
+  button4.onclick = function () {
+    speak(text3, 6, 0.0);
+  }
+  
+   let button5 = document.querySelector("#speak4");
+  button5.onclick = function () {
+    speak(text4, 6, 0.0);
+  }
+  
+   let button6 = document.querySelector("#speak5");
+  button6.onclick = function () {
+    speak(text5, 6, 0.0);
+  }
+  
+  let button7 = document.querySelector("#speak6");
+  button7.onclick = function () {
+    speak(text7, 6, 0.0);
+  }
+  
+   let button8 = document.querySelector("#speak7");
+  button8.onclick = function () {
+    speak(text8, 6, 0.0);
+  }
+</script>
+</body>
+</html>
